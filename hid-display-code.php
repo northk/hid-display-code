@@ -55,7 +55,8 @@ class HID_display_code {
         // Clean up the content and attributes
         $args['user'] = esc_html(trim($args['user']));                
         $args['gist'] = esc_html(trim($args['gist']));        
-        $args['file'] = esc_html(trim($args['file']));                
+        // urlencode file name in case there are spaces                       
+        $args['file'] = esc_html(urlencode(trim($args['file']))); 
         $content = esc_html($content);
 
         // Save boolean conditions for complex logic later
