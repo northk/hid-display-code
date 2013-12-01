@@ -7,9 +7,11 @@ The plugin is designed so that you can use the WordPress visual editor rather th
 
 To use it, first copy the 'hid-display-code' folder into wp-content/plugins. Then activate the plug-in in the WordPress control panel.
 
-Then insert a shortcode into a page or post like this:
+Then insert a shortcode into a page or post as follows.
 
-## For inline code (within a paragraph): ##
+### For inline code (within a paragraph) ###
+Place the shortcode within the paragraph text where you want the formatted code to appear:
+
 A paragraph with code in it: `[hid-display-code]<div class="test"></div>[/hid-display-code]`. Neat, eh?
 
 Inline code will be wrapped with a `<code>` element. So, you can style it by hooking into the `<code>` element like this:
@@ -19,7 +21,10 @@ Inline code will be wrapped with a `<code>` element. So, you can style it by hoo
     font-family: monospace, serif;
 }`
 
-## To display an embedded Github Gist (on a line by itself): ##
+### To display an embedded Github Gist ###
+
+Place the shortcode on a line by itself:
+
 `[hid-display-code user="northk" gist="7635946" file="test.css"][/hid-display-code]`
 
 * `user` is the Github user name and is required.  
@@ -30,7 +35,7 @@ The above shortcode would generate code to display a gist, like this:
 
 `<script src="http://gist.github.com/northk/7635946.js?file=test.css"></script>`
 
-## Styling Gists ##
+### Styling Gists ###
 
 To style Gists, you have to use the Github-defined class names. To get you started on styling Github gists, here is some CSS I used. This will need to be modified to suit your site, of course!
 
@@ -51,8 +56,11 @@ To style Gists, you have to use the Github-defined class names. To get you start
 }       
 ```
 
-## Potential Issues ##
-Shortcodes must be fully closed, like this. Otherwise they won't be processed correctly:
+### Potential issues ###
+* Shortcodes must be fully closed, like this. Otherwise they won't be processed correctly:  
 `[hid-display-code][/hid-display-code] <== must be closed`
+* Shortcodes can contain a Gist or inline content, but not both.
+* If you use the shortcode and aren't seeing any results, turn on `WP_DEBUG` in `wp-config.php` like this:  
+`define('WP_DEBUG', true);` Then check the debug log for potential error messages from the plugin.
 
 Brought to you by North Krimsly at [www.highintegritydesign.com](http://www.highintegritydesign.com) Enjoy!
