@@ -60,7 +60,9 @@ To style Gists, you have to use the Github-defined class names. To get you start
 * Shortcodes must be fully closed, like this. Otherwise they won't be processed correctly:  
 `[hid-showcode][/hid-showcode] <== must be closed`
 * Shortcodes can contain a Gist or inline content, but not both.
-* If you use the shortcode and aren't seeing any results, turn on `WP_DEBUG` in `wp-config.php` like this:  
+* If you use the shortcode and aren't seeing any results or see incorrect results, turn on `WP_DEBUG` in `wp-config.php` like this:  
 `define('WP_DEBUG', true);` Then check the debug log for potential error messages from the plugin.
+* Sometimes either TinyMCE or WordPress inserts `<wbr />` (word break opportunity) elements into code. I'd never even heard of that HTML5 element and I had to look it up! I saw no mention of how to turn this behavior off, so I simply removed them with `preg_replace()`. So if you try to display code exactly like this `&lt;wbr /&gt;` it will get stripped out. Pretty unlikely, but now you know.
+
 
 Brought to you by North Krimsly at [www.highintegritydesign.com](http://www.highintegritydesign.com) Enjoy!

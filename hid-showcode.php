@@ -126,6 +126,9 @@ class HID_showcode {
 
         // or else it's inline code, so insert a <code> element
         else {
+            // For some reason either WordPress or TinyMCE sometimes inserts white break <wbr />
+            // elements. I couldn't find out why so I just remove them if they are in the content
+            $content = preg_replace('/&lt;wbr \/&gt;/', '', $content);
             return "<code>" . $content . "</code>";            
         }
     }
