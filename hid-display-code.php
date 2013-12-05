@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: hid-display-code
+Plugin Name: hid-showcode
 Plugin URI: http://highintegritydesign.com
 Description: Display either a Github Gist or styled inline code, using a shortcode.
 Version: 1.0
@@ -8,42 +8,42 @@ Author: North Krimsly
 Author URI: http://highintegritydesign.com
 License: GPL2
 
-hid-display-code is free software: you can redistribute it and/or modify
+hid-showcode is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
 any later version.
 
-hid-display-code is distributed in the hope that it will be useful,
+hid-showcode is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with hid-display-code. If not, see http://www.gnu.org/licenses/gpl-2.0.html
+along with hid-showcode. If not, see http://www.gnu.org/licenses/gpl-2.0.html
 
 */
 
-class HID_display_code {  
+class HID_showcode {  
 
     public function __construct()  
     {  
-        // Add a new 'hid-display-code' shortcode and attach it to our class method
-        add_shortcode('hid-display-code', array(
+        // Add a new 'hid-showcode' shortcode and attach it to our class method
+        add_shortcode('hid-showcode', array(
             $this, 
-            'do_display_code_shortcode')
+            'do_showcode_shortcode')
         );  
 
         // turn off 'texturize' for the shortcode. This will keep double quotes as 
         // double quotes rather than smart quotes, and keep single quotes frome being
         // turned into apostrophies.
-        add_filter( 'no_texturize_shortcodes', 'no_texturize_display_code_shortcode' );
-        function no_texturize_display_code_shortcode($shortcodes){
-            $shortcodes = array('hid-display-code');
+        add_filter( 'no_texturize_shortcodes', 'no_texturize_showcode_shortcode' );
+        function no_texturize_showcode_shortcode($shortcodes){
+            $shortcodes = array('hid-showcode');
             return $shortcodes;
         }
     }  
 
-    public function do_display_code_shortcode($atts = array(), $content='')  
+    public function do_showcode_shortcode($atts = array(), $content='')  
     {  
         // first parse the shortcode attributes and provide default values
         $args = shortcode_atts( array(
@@ -71,7 +71,7 @@ class HID_display_code {
         // If so, that's an error.
         if (($have_content) && (($have_gist) || $have_user || $have_file)) {
             if ( true === WP_DEBUG ) {
-                error_log('hid-display-code plugin: cannot specify both a gist and inline code content.');
+                error_log('hid-showcode plugin: cannot specify both a gist and inline code content.');
             }
             return;
         }
@@ -80,7 +80,7 @@ class HID_display_code {
         // If only one is supplied, it's an error.
         if (($have_gist && !$have_user) || ($have_user && !$have_gist)) {
             if ( true === WP_DEBUG ) {
-                error_log('hid-display-code plugin: both a Github username and gist ID must be specified.');
+                error_log('hid-showcode plugin: both a Github username and gist ID must be specified.');
             }
             return;
         }
@@ -88,7 +88,7 @@ class HID_display_code {
         // Check if nothing was supplied at all
         if (!$have_gist && !$have_user && !$have_content) {
             if ( true === WP_DEBUG ) {
-                error_log('hid-display-code plugin: either a Gist or inline content must be specified.');
+                error_log('hid-showcode plugin: either a Gist or inline content must be specified.');
             }
             return;
         }
@@ -96,14 +96,14 @@ class HID_display_code {
         // if the user name or Gist ID aren't valid, return an error
         if ($have_gist && !$valid_user) {
             if ( true === WP_DEBUG ) {
-                error_log('hid-display-code plugin: invalid Github username.');
+                error_log('hid-showcode plugin: invalid Github username.');
             }
             return;
 
         }
         if ($have_gist && !$valid_gist) {
             if ( true === WP_DEBUG ) {
-                error_log('hid-display-code plugin: invalid Gist ID.');
+                error_log('hid-showcode plugin: invalid Gist ID.');
             }
             return;
 
@@ -131,7 +131,7 @@ class HID_display_code {
     }
 }
 
-// construct a new instance of the display code class
-$hid_display_code_instance = new HID_display_code();  
+// construct a new instance of the showcode class
+$hid_code_instance = new HID_showcode();  
 
 ?>
