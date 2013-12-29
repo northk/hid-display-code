@@ -23,7 +23,7 @@ along with hid-showcode. If not, see http://www.gnu.org/licenses/gpl-2.0.html
 
 */
 
-class HID_showcode {  
+class HID_Showcode {  
 
     public function __construct()  
     {  
@@ -135,6 +135,6 @@ class HID_showcode {
 }
 
 // construct a new instance of the showcode class
-$hid_code_instance = new HID_showcode();  
+$hid_code_instance = new HID_Showcode();  
 
 ?>
