@@ -3,7 +3,7 @@
 Plugin Name: hid-showcode
 Plugin URI: http://highintegritydesign.com
 Description: Display either a Github Gist or styled inline code, using a shortcode.
-Version: 1.0
+Version: 1.1
 Author: North Krimsly
 Author URI: http://highintegritydesign.com
 License: GPL2
