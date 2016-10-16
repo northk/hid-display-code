@@ -111,7 +111,7 @@ class HID_Showcode {
 
         // If it's a valid username and Gist ID, embed Javascript to display the Gist
         if ($have_gist) {
-            $html = '<script src="http://gist.github.com/' . $args['user'] . '/'
+            $html = '<script src="https://gist.github.com/' . $args['user'] . '/'
                     . $args['gist'] . '.js';
 
             // if a file is specified then build that into the embed as well
